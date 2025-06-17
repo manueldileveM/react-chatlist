@@ -10,6 +10,15 @@ const ChatPage = () => {
   const { id_chatlist, id_chat } = useParams();
   const chat = mockChats.find(c => c.id === id_chat);
 
+  if (!chat) {
+    return (
+      <div style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
+        <h2>Chat non trovata</h2>
+        <p>Controlla l'URL o torna alla lista chat.</p>
+      </div>
+    );
+  }
+
   return (
     <Layout
       left={<ChatList chats={mockChats} />}

@@ -5,7 +5,7 @@ import ChatPage from './pages/ChatPage';
 
 function App() {
   return (
-    <Router basename="/react-chatlist">
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         {/* Redirect a una chatlist di default */}
         <Route path="/" element={<Navigate to="/chatlist/1" replace />} />

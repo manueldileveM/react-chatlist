@@ -9,12 +9,21 @@ const Layout = ({ left, right, headerRight }) => {
     <Box>
       <HeaderMain />
       <Box display="flex" flexDirection={isMobile ? 'column' : 'row'} height="calc(100vh - 64px)">
-        {!isMobile && <Box width="30%" borderRight="1px solid #ccc" bgcolor="#fff">{left}</Box>}
+        {/* Sidebar visibile solo se non mobile oppure se non siamo nella chat */}
+        <Box
+          width={isMobile ? '100%' : '30%'}
+          borderRight={isMobile ? 'none' : '1px solid #ccc'}
+          bgcolor="#fff"
+          sx={{ display: isMobile && right ? 'none' : 'block' }}
+        >
+          {left}
+        </Box>
+
+        {/* Chat */}
         <Box flex={1} display="flex" flexDirection="column">
           {isMobile && headerRight}
           <Box flex={1}>{right}</Box>
         </Box>
-        {isMobile && !right && <Box>{left}</Box>}
       </Box>
     </Box>
   );
